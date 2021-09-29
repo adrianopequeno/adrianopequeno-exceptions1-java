@@ -1,0 +1,40 @@
+package application;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
+
+import main.entities.Reservation;
+
+public class Program {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+		System.out.print("Número do quarto: ");
+		int number = sc.nextInt();
+
+		System.out.print("Data de entrada (dd/MM/yyyy): ");
+		Date checkIn = sdf.parse(sc.next());
+		System.out.print("Data de saída (dd/MM/yyyy): ");
+		Date checkOut = sdf.parse(sc.next());
+
+		Reservation reservation = new Reservation(number, checkIn, checkOut);
+		System.out.println("Reservas: " + reservation);
+
+		System.out.println();
+		System.out.println("Entre com a atualizaçao da reserva:");
+		System.out.print("Data de entrada (dd/MM/yyyy): ");
+		checkIn = sdf.parse(sc.next());
+		System.out.print("Data de saída (dd/MM/yyyy): ");
+		checkOut = sdf.parse(sc.next());
+
+		reservation.updateDates(checkIn, checkOut);
+		System.out.println("Reservas: " + reservation);
+
+		sc.close();
+
+	}
+}
