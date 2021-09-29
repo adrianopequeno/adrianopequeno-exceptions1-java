@@ -9,9 +9,9 @@ public class Reservation {
 	private Integer roomNumber;
 	private Date checkIn;
 	private Date checkOut;
-
+	
 	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-
+	
 	public Reservation() {
 	}
 
@@ -36,30 +36,35 @@ public class Reservation {
 	public Date getCheckOut() {
 		return checkOut;
 	}
-
+	
 	public long durarion() {
 		long diff = checkOut.getTime() - checkIn.getTime();
 		return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 	}
-
+	
 	public String updateDates(Date checkIn, Date checkOut) {
-
+		
 		Date now = new Date();
-
-		if (checkIn.before(now) || checkOut.before(now))
-			return "Error na reserva: As datas de atualizaçao das reservas nao pode ser no passado!";
-		if (!checkOut.after(checkIn))
-			return "Error na reserva: A data de saída tem que ser superior a data de entrada";
-
+		
+		if (checkIn.before(now) || checkOut.before(now)) return "Error na reserva: A datas de atualizaçao das reservas nao pode ser no passado!";
+		if (!checkOut.after(checkIn)) return "Error na reserva: A data de saída tem que ser superior a data de entrada";
+		
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
-
+		
 		return null;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Quanto " + roomNumber + ", entrada: " + sdf.format(checkIn) + ", saída: " + sdf.format(checkOut) + ", "
-				+ durarion() + " nights";
+		return "Quanto "
+				+ roomNumber
+				+ ", entrada: "
+				+ sdf.format(checkIn)
+				+ ", saída: "
+				+ sdf.format(checkOut)
+				+ ", "
+				+ durarion()
+				+ " nights";
 	}
 }

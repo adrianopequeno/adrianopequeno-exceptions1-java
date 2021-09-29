@@ -47,7 +47,7 @@ public class Reservation {
 		Date now = new Date();
 
 		if (checkIn.before(now) || checkOut.before(now))
-			return "Error na reserva: As datas de atualizaçao das reservas nao pode ser no passado!";
+			return "Error na reserva: A datas de atualizaçao das reservas nao pode ser no passado!";
 		if (!checkOut.after(checkIn))
 			return "Error na reserva: A data de saída tem que ser superior a data de entrada";
 

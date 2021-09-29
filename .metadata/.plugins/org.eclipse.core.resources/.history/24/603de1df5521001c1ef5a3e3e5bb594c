@@ -36,8 +36,11 @@ public class Program {
 			checkOut = sdf.parse(sc.next());
 
 			String error = reservation.updateDates(checkIn, checkOut);
-			if (error != null) System.out.println(" Erro na reservar: " + error);
-			else System.out.println("Reservas: " + reservation);
+			if (error != null) {
+				System.out.println(" Erro na reservar: " + error);
+			} else {
+				System.out.println("Reservas: " + reservation);
+			}
 
 		}
 
